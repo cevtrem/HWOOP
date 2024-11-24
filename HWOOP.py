@@ -43,6 +43,9 @@ class Student:
                 f'Курсы в процессе изучения: {in_progress}\n'
                 f'Завершенные курсы: {finished}')
 
+    def __eq__(self, other_student):
+        return (self.average_grade() == other_student.average_grade())
+
 
 class Mentor:
 
@@ -81,7 +84,8 @@ class Lecturer(Mentor):
                 f'Фамилия: {self.surname}\n'
                 f'Средняя оценка за лекции {self.average_grade()}')
 
-
+    def __eq__(self, other_lecturer):
+        return (self.average_grade() == other_lecturer.average_grade())
 
 
 class Reviewer(Mentor):
@@ -155,9 +159,7 @@ def average_lecturer_grade(lecturers, course):
     return 0
 
 students = [student1, student2]
-
 lecturers = [lecturer1, lecturer2]
-
 course_name = 'Python'
 avg_student_grade = average_student_grade(students, course_name)
 avg_lecturer_grade = average_lecturer_grade(lecturers, course_name)
